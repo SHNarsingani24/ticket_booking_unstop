@@ -14,7 +14,7 @@ export const Coach = () => {
   // Fetching the data from backend about the booking.
   useEffect(() => {
     // used fetch api to make request to API endpoint.
-    fetch('http://localhost:3001/').then(res => res.json())
+    fetch(`${process.env.API_URL}/`).then(res => res.json())
     .then(data => {
       // Parsing JSON Data to get normal JS array.
       data = JSON.parse(data);
@@ -38,7 +38,7 @@ export const Coach = () => {
   // function to reset the Coach state
   // Just for testing purposes.
   const reset = () => {
-    fetch('http://localhost:3001/reset');
+    fetch(`${process.env.API_URL}/reset`);
   }
 
   return (

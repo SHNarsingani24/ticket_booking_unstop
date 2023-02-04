@@ -38,7 +38,7 @@ export const Booking = ({status, setStatus, reset}) => {
     }
 
     // making API call, using fetch api, to store the details in the backend.
-    fetch('http://localhost:3001/book/', {
+    fetch(`${process.env.API_URL}/book`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
