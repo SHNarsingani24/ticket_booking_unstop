@@ -14,14 +14,15 @@ export const Coach = () => {
   // Fetching the data from backend about the booking.
   useEffect(() => {
     // used fetch api to make request to API endpoint.
-    fetch(`${process.env.API_URL}/`).then(res => res.json())
+    console.log(process.env.API_URL);
+    fetch("https://ticket-booking-api-txa9.onrender.com/").then(res => res.json())
     .then(data => {
       // Parsing JSON Data to get normal JS array.
       data = JSON.parse(data);
       // updating the status of the Coach.
       setStatus([...data]);
     });
-  })
+  }, [])
 
   // Function to handle booking function
   // it is used inside Booking Component.
@@ -30,7 +31,8 @@ export const Coach = () => {
         // updating the state of Coach,
         // this will temporarely update the Coach state.
         // permenant state change in the database will happen in Booking
-        prev[i] = true;
+        for(let j=0; j<i.length; j++)
+          prev[i[j]] = true;
         return [...prev];
     });
   }
@@ -38,7 +40,7 @@ export const Coach = () => {
   // function to reset the Coach state
   // Just for testing purposes.
   const reset = () => {
-    fetch(`${process.env.API_URL}/reset`);
+    fetch("https://ticket-booking-api-txa9.onrender.com/reset");
   }
 
   return (

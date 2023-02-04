@@ -29,7 +29,6 @@ export const Booking = ({status, setStatus, reset}) => {
         // if seat is available, book it and store the in in seatNumbers.
         if(!status[start]){
             seatNumbers.push(start);
-            setStatus(start);
             booked++;   // number of booked seats will increase.
         }
         start++;
@@ -38,13 +37,15 @@ export const Booking = ({status, setStatus, reset}) => {
     }
 
     // making API call, using fetch api, to store the details in the backend.
-    fetch(`${process.env.API_URL}/book`, {
+    fetch("https://ticket-booking-api-txa9.onrender.com/book", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(seatNumbers)
     });
+
+    setStatus(seatNumbers);
 
     // will return seatNumbers.
     return seatNumbers;
@@ -126,7 +127,7 @@ export const Booking = ({status, setStatus, reset}) => {
                 {/* Input box to take number of seats as input from the user. */}
                 <InputBox type={"number"} value={seats} onChange={handleChange} min={1} max={Math.min(available, 7)}/>
                 {/* Button to book seats. */}
-                <BookButton disabled={seats > Math.min(available, 7)} onClick={handleClick}>Book</BookButton>
+                <BookButton disabled={seats > Math.min(available, 7) || notification.status} onClick={handleClick}>Book</BookButton>
                 {/* Button to reset the whole coach */}
                 <ResetButton disabled={available===80} onClick={() => reset()}> Reset </ResetButton>
             </>
