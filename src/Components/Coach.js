@@ -62,6 +62,9 @@ export const Coach = () => {
 // Just adding a little styling to the main component.
 const Container = styled.div`
   border: 2px solid black;
+  padding: 2em;
+  width: 120vw;
+  height: 130vh;
   background-color: #FAF8F1;
 `;
 

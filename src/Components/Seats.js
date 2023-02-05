@@ -51,6 +51,7 @@ const Container = styled.div`
     border: 2px solid black;
     margin-inline: auto;
     margin-bottom: 1em;
-    max-width: 430px;
-    max-height: 1000px;
+    max-width: 26.875em;
+    height: auto;
+    min-width: 26.875em;
 `;

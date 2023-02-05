@@ -166,6 +166,7 @@ export const Booking = ({status, setStatus, reset}) => {
             <>
                 <p style={{color: "red", fontSize: "1.5em"}}><b>Tickets SOLD OUT 😓</b></p>
                 <p style={{opacity: "0.6", width: "auto"}}>Please try again some time later!</p>
+                <ResetButton disabled={available===80} onClick={() => reset()}> Reset </ResetButton>
             </>
         }
     </Container>
