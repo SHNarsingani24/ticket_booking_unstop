@@ -14,7 +14,6 @@ export const Coach = () => {
   // Fetching the data from backend about the booking.
   useEffect(() => {
     // used fetch api to make request to API endpoint.
-    console.log(process.env.API_URL);
     fetch("https://ticket-booking-api-txa9.onrender.com/").then(res => res.json())
     .then(data => {
       // Parsing JSON Data to get normal JS array.
@@ -41,6 +40,11 @@ export const Coach = () => {
   // Just for testing purposes.
   const reset = () => {
     fetch("https://ticket-booking-api-txa9.onrender.com/reset");
+    let data = [];
+    for(let i=0; i<80; i++)
+      data.push(false);
+    
+    setStatus([...data]);
   }
 
   return (
@@ -63,9 +67,8 @@ export const Coach = () => {
 const Container = styled.div`
   border: 2px solid black;
   padding: 2em;
-  width: 120vw;
-  height: 130vh;
   background-color: #FAF8F1;
+  min-width: 35em;
 `;
 
 // styling the description box, boxes to show available and booked colors.
